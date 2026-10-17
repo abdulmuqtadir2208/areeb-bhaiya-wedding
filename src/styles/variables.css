@@ -1,17 +1,34 @@
 :root {
-  /* Colors */
-  --color-background: #f8f3ec;
-  --color-surface: #fffdf9;
-  --color-text: #2d2926;
-  --color-text-muted: #716963;
-  --color-accent: #7b2638;
-  --color-gold: #b08a4a;
+  /* ================================
+     Colors
+     ================================ */
 
-  /* Typography */
---font-heading: "Cormorant Garamond", serif;
---font-body: "Montserrat", sans-serif;
+  --color-background: #f7e9e8;
+  --color-surface: #fffaf8;
+  --color-surface-soft: #fdf2f1;
 
-  /* Spacing */
+  --color-text: #3b2d2d;
+  --color-text-muted: #806d6d;
+
+  --color-accent: #b96f7c;
+  --color-accent-dark: #965765;
+  --color-accent-soft: #e7b9c1;
+
+  --color-gold: #b89a68;
+
+  --color-border: rgba(185, 111, 124, 0.22);
+
+  /* ================================
+     Typography
+     ================================ */
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", sans-serif;
+
+  /* ================================
+     Spacing
+     ================================ */
+
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 24px;
@@ -19,11 +36,30 @@
   --space-xl: 80px;
   --space-xxl: 120px;
 
-  /* Layout */
-  --container-width: 1200px;
+  /* ================================
+     Layout
+     ================================ */
 
-  /* Effects */
+  --container-width: 1200px;
+  --mobile-padding: 20px;
+
+  /* ================================
+     Cards & Shapes
+     ================================ */
+
   --radius-sm: 8px;
   --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ================================
+     Effects
+     ================================ */
+
+  --shadow-soft: 0 10px 30px rgba(80, 45, 50, 0.08);
+  --shadow-card: 0 16px 40px rgba(80, 45, 50, 0.10);
+
+  --transition-fast: 200ms ease;
   --transition: 300ms ease;
+  --transition-slow: 600ms ease;
 }
