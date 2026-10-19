@@ -3,6 +3,9 @@ import wedding from "../data/wedding";
 function Hero() {
   return (
     <section className="hero" id="home">
+      <img className="hero-floral hero-floral-left" src="/images/decorations/floral-corner.svg" alt="" aria-hidden="true" />
+      <img className="hero-floral hero-floral-right" src="/images/decorations/floral-corner.svg" alt="" aria-hidden="true" />
+      <img className="hero-chandelier" src="/images/decorations/chandelier.svg" alt="" aria-hidden="true" />
       <div className="hero-decoration">✦</div>
 
       <p className="hero-subtitle">

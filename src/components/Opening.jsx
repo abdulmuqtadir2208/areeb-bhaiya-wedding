@@ -19,17 +19,19 @@ function Opening() {
 
     setTimeout(() => {
       setIsClosed(true);
-    }, 1100);
+    }, 1350);
   };
 
   const particles = Array.from({ length: 18 });
 
   return (
-    <div
-      className={`opening ${
-        isClosed ? "opening-hidden" : ""
-      }`}
-    >
+  <div
+    className={`opening ${
+      isClosed ? "opening-hidden" : ""
+    } ${isCelebrating ? "opening-started" : ""}`}
+  >
+    <div className="curtain curtain-left" />
+    <div className="curtain curtain-right" />
       <div className="opening-content">
 
         <p className="opening-label">

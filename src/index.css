@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap");
 @import "./styles/variables.css";
 * {
   margin: 0;
@@ -41,7 +41,7 @@ img {
 
 .hero {
   min-height: 100svh;
-  padding: 100px var(--mobile-padding) 70px;
+  padding: 150px var(--mobile-padding) 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,6 +50,32 @@ img {
   position: relative;
   overflow: hidden;
 }
+
+.hero-chandelier {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(76px, 13vw, 118px);
+  height: clamp(112px, 19vw, 170px);
+  object-fit: contain;
+  opacity: .92;
+  filter: drop-shadow(0 5px 12px rgba(105, 68, 57, .12));
+  animation: chandelier-sway 7s ease-in-out infinite;
+  transform-origin: top center;
+  pointer-events: none;
+}
+.hero-floral {
+  position: absolute;
+  width: clamp(150px, 29vw, 310px);
+  opacity: .43;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-floral-left { left: -52px; top: 7%; }
+.hero-floral-right { right: -52px; bottom: 2%; transform: rotate(180deg); }
+.hero > :not(.hero-floral):not(.hero-chandelier) { z-index: 1; }
+@keyframes chandelier-sway { 0%, 100% { transform: translateX(-50%) rotate(-1deg); } 50% { transform: translateX(-50%) rotate(1deg); } }
 
 .hero-decoration {
   font-size: 18px;
@@ -1088,10 +1114,10 @@ background: rgba(255, 250, 248, 0.88);
   align-items: center;
   justify-content: center;
 
-  background: rgba(35, 27, 24, 0.48);
+  background: rgba(35, 27, 24, 0.62);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
 
   transition:
     opacity 900ms ease,
@@ -1111,6 +1137,8 @@ background: rgba(255, 250, 248, 0.88);
 
   text-align: center;
 }
+
+
 
 /* ================================
    OPENING TITLE
@@ -1573,6 +1601,77 @@ background: rgba(255, 250, 248, 0.88);
     transition: none;
   }
 }
+
+
+/* ================================
+   WEDDING CURTAIN REVEAL
+================================ */
+
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 1;
+
+  background: linear-gradient(90deg, #4c2733 0%, #6a3b49 18%, #542b38 38%, #70414e 50%, #542b38 68%, #6a3b49 86%, #4c2733 100%);
+  box-shadow: inset -14px 0 24px rgba(27, 12, 18, .18), inset 14px 0 24px rgba(255, 225, 230, .05);
+  pointer-events: none;
+  transition: transform 1200ms cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.curtain-left {
+  left: 0;
+  border-right: 1px solid rgba(231, 185, 193, 0.35);
+}
+
+.curtain-right {
+  right: 0;
+  border-left: 1px solid rgba(231, 185, 193, 0.35);
+}
+
+.curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .55;
+  background: repeating-linear-gradient(90deg, transparent 0, rgba(255, 224, 230, .055) 7%, transparent 13%, rgba(20, 8, 14, .10) 20%, transparent 26%);
+}
+.curtain::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; width: 18px;
+  background: linear-gradient(90deg, rgba(22, 9, 14, .20), rgba(255, 228, 232, .08), transparent);
+}
+.curtain-left::after { right: 0; }
+.curtain-right::after { left: 0; transform: rotate(180deg); }
+
+/* Open the curtains after the heart is clicked */
+
+.opening-started .curtain-left {
+  transform: translateX(-100%);
+}
+
+.opening-started .curtain-right {
+  transform: translateX(100%);
+}
+
+/* Keep the opening content above the curtains */
+
+.opening-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    transition-duration: 0ms;
+  }
+}
+
+
 /* ================================
    NASHEED MUSIC PLAYER
 ================================ */
@@ -1961,3 +2060,96 @@ background: rgba(255, 250, 248, 0.88);
     font-size: 25px;
   }
 }
+
+/* ================================
+   COMPLETE INVITATION EXPERIENCE
+================================ */
+.section-shell { width: min(1120px, 100%); margin-inline: auto; }
+.ornate-section, .ayah-section, .date-reveal-section, .wishes-section, .thankyou-section { position: relative; padding: clamp(64px, 10vw, 120px) 20px; overflow: hidden; }
+.ornate-section::before, .ornate-section::after, .ayah-section::before, .thankyou-section::before { content: "✦  ❧  ✦"; position: absolute; color: var(--color-gold); opacity: .32; font-size: clamp(44px, 9vw, 100px); pointer-events: none; }
+.ornate-section::before { top: 18px; left: 4%; transform: rotate(-18deg); }
+.ornate-section::after { right: 4%; bottom: 18px; transform: rotate(18deg); }
+.ornate-card, .ayah-card, .wishes-card, .thankyou-card { position: relative; width: min(760px, 100%); margin: 0 auto; padding: clamp(30px, 6vw, 64px); text-align: center; background: rgba(255,250,248,.82); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+.ornate-card::before, .ornate-card::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(184,154,104,.34); border-radius: calc(var(--radius-lg) - 6px); pointer-events: none; }
+.ornament { display: block; margin: 20px 0; color: var(--color-gold); font-size: 26px; letter-spacing: 8px; }
+.arabic-bismillah, .arabic-ayah { font-family: "Amiri", "Noto Naskh Arabic", serif; color: var(--color-accent-dark); line-height: 1.9; }
+.arabic-bismillah { font-size: clamp(28px, 5vw, 44px); margin: 18px 0; }
+.translation, .ayah-translation { color: var(--color-text-muted); line-height: 1.9; max-width: 620px; margin: 12px auto 22px; }
+.ornate-card h2, .ayah-card h2, .wishes-card h2, .thankyou-card h2 { font-family: var(--font-heading); font-weight: 400; font-size: clamp(36px, 6vw, 58px); margin: 14px 0; }
+.ornate-card > p:last-child { line-height: 1.9; max-width: 560px; margin: auto; }
+.ayah-section::before { content: "❧"; top: 6px; right: 5%; }
+.ayah-card { background: linear-gradient(145deg, rgba(255,250,248,.96), rgba(253,242,241,.9)); }
+.arabic-ayah { font-size: clamp(25px, 4vw, 36px); margin: 22px 0; }
+.ayah-reference { color: var(--color-accent-dark); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+.date-reveal-section { text-align: center; background: linear-gradient(180deg, transparent, rgba(231,185,193,.18), transparent); }
+.date-hearts { display: flex; justify-content: center; align-items: center; gap: clamp(16px, 5vw, 44px); margin: 38px auto 28px; }
+.date-heart { border: 0; background: transparent; color: var(--color-accent); font-size: clamp(56px, 10vw, 92px); line-height: 1; cursor: pointer; filter: drop-shadow(0 8px 14px rgba(150,87,101,.2)); transition: transform .35s ease, color .35s ease; animation: dateHeartFloat 3s ease-in-out infinite; }
+.date-heart:nth-child(2) { animation-delay: .3s; color: #c6818e; }
+.date-heart:nth-child(3) { animation-delay: .6s; color: #d8a0a8; }
+.date-heart:hover, .date-heart-revealed { transform: translateY(-8px) scale(1.12); }
+.date-reveal-result { min-height: 120px; opacity: .78; transition: opacity .35s ease, transform .35s ease; }
+.date-reveal-result.is-revealed { opacity: 1; transform: translateY(0); animation: dateRevealIn .7s ease both; }
+.date-day { font-family: var(--font-heading); font-size: clamp(58px, 10vw, 88px); line-height: .95; color: var(--color-accent-dark); }
+.date-month { font-family: var(--font-heading); font-size: clamp(24px, 4vw, 38px); }
+.date-time { margin-top: 8px; color: var(--color-text-muted); letter-spacing: 2px; text-transform: uppercase; font-size: 11px; }
+@keyframes dateHeartFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes dateRevealIn { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.venue-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+.venue-grid .venue-card { width: 100%; min-width: 0; }
+.wedding-button, .text-button { border: 1px solid var(--color-accent); border-radius: var(--radius-pill); padding: 13px 24px; color: var(--color-surface); background: var(--color-accent-dark); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.wedding-button:hover, .text-button:hover { transform: translateY(-2px); background: var(--color-accent); }
+.wishes-card textarea { display: block; width: 100%; resize: vertical; min-height: 120px; margin: 24px 0 16px; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text); background: rgba(255,255,255,.72); }
+.form-note { margin-top: 14px; color: var(--color-text-muted); font-size: 13px; line-height: 1.7; }
+.text-button { margin-top: 12px; background: transparent; color: var(--color-accent-dark); }
+.text-button:hover { color: white; }
+.thankyou-section::before { content: "❧"; top: 18px; left: 5%; }
+.thankyou-intro { color: var(--color-text-muted); }
+.letter-envelope { position: relative; display: block; width: 130px; height: 88px; margin: 28px auto 22px; border: 1px solid rgba(184,154,104,.6); border-radius: 6px; background: #f3d6d8; cursor: pointer; box-shadow: var(--shadow-soft); overflow: hidden; }
+.letter-envelope::before { content: ""; position: absolute; inset: 0; background: #f8e6e6; clip-path: polygon(0 0, 50% 55%, 100% 0); }
+.envelope-flap { position: absolute; inset: 0; background: #e9bec5; clip-path: polygon(0 100%, 50% 42%, 100% 100%); }
+.envelope-heart { position: absolute; left: 50%; top: 48%; transform: translate(-50%,-50%); color: var(--color-accent-dark); font-size: 24px; }
+.letter-envelope-open .envelope-heart { opacity: 0; }
+.thankyou-letter { max-height: 0; overflow: hidden; opacity: 0; transform: translateY(10px); transition: max-height .7s ease, opacity .5s ease, transform .5s ease; max-width: 520px; margin: 0 auto; }
+.thankyou-letter-open { max-height: 360px; opacity: 1; transform: translateY(0); padding: 18px 0; }
+.thankyou-letter p { line-height: 1.9; margin: 12px 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 700px) {
+  .venue-grid { grid-template-columns: 1fr; }
+  .venue-card { padding: 36px 22px; }
+  .date-hearts { gap: 12px; }
+  .date-heart { font-size: clamp(48px, 16vw, 72px); }
+  .ornate-card, .ayah-card, .wishes-card, .thankyou-card { padding: 34px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .date-heart { animation: none; }
+  .date-reveal-result, .thankyou-letter, .letter-envelope { transition: none; }
+}
+
+/* Couple introduction cards */
+.couple-section { padding: clamp(64px, 10vw, 120px) 20px; background: rgba(255,250,248,.38); }
+.couple-grid { width: min(980px, 100%); margin: 34px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+.couple-card { position: relative; text-align: center; padding: clamp(34px, 6vw, 60px) 24px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: rgba(255,250,248,.85); box-shadow: var(--shadow-card); overflow: hidden; }
+.couple-card::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(184,154,104,.35); border-radius: calc(var(--radius-lg) - 6px); pointer-events: none; }
+.couple-flourish { display: block; color: var(--color-gold); font-size: 44px; margin-bottom: 12px; }
+.couple-card h3 { position: relative; margin: 12px auto; max-width: 400px; font: 400 clamp(30px, 5vw, 48px)/1.12 var(--font-heading); color: var(--color-text); }
+.couple-divider { color: var(--color-accent); }
+@media (max-width: 650px) { .couple-grid { grid-template-columns: 1fr; } }
+
+/* Scroll-only decorative layer: CSS petals keep the effect light and mobile-friendly. */
+.scroll-decorations { position: fixed; inset: 0; z-index: 4; overflow: hidden; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility .8s ease; }
+.scroll-decorations-active { opacity: 1; visibility: visible; }
+.floating-petal { position: absolute; top: -7vh; display: block; border-radius: 85% 12% 78% 18%; background: linear-gradient(145deg, rgba(255,224,229,.95), rgba(201,119,139,.7)); box-shadow: 0 1px 5px rgba(133,70,85,.12); opacity: .7; transform: rotate(var(--petal-rotate)); animation-name: petal-fall; animation-timing-function: linear; animation-iteration-count: infinite; will-change: transform, top; }
+.floating-petal:nth-of-type(3n) { background: linear-gradient(145deg, rgba(255,244,238,.95), rgba(220,165,164,.7)); opacity: .58; }
+.floating-petal:nth-of-type(4n) { border-radius: 70% 30% 65% 35%; opacity: .48; }
+.petal-glow { position: absolute; width: 30vw; height: 30vw; max-width: 360px; max-height: 360px; border-radius: 50%; background: rgba(231,185,193,.12); filter: blur(45px); }
+.petal-glow-one { left: -15vw; top: 24%; }
+.petal-glow-two { right: -16vw; top: 66%; }
+@keyframes petal-fall { 0% { top: -8vh; transform: translate3d(0,0,0) rotate(var(--petal-rotate)); } 50% { transform: translate3d(var(--petal-drift),52vh,0) rotate(calc(var(--petal-rotate) + 150deg)); } 100% { top: 108vh; transform: translate3d(calc(var(--petal-drift) * -0.5),112vh,0) rotate(calc(var(--petal-rotate) + 320deg)); } }
+@media (max-width: 600px) { .floating-petal { opacity: .42; } .petal-glow { filter: blur(30px); } }
+@media (prefers-reduced-motion: reduce) { .scroll-decorations { display: none; } .floating-petal { animation: none; } }
+
+/* Final visual polish: lightweight vector artwork and motion-safe presentation */
+.hero { isolation: isolate; }
+.section-heading::after { content: ""; display: block; width: min(240px, 62vw); height: 28px; margin: 18px auto 0; background: url('/images/decorations/ornamental-divider.svg') center / contain no-repeat; opacity: .8; }
+@media (max-width: 600px) { .hero { padding-top: 138px; } .hero-floral { width: 190px; opacity: .32; } .hero-floral-left { left: -82px; top: 10%; } .hero-floral-right { right: -82px; bottom: 1%; } .hero-chandelier { width: 74px; height: 108px; } }
+@media (prefers-reduced-motion: reduce) { .hero-chandelier { animation: none; } }

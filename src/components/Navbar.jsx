@@ -52,9 +52,8 @@ function Navbar() {
           Venue
         </a>
 
-        <a href="#gallery" onClick={closeMenu}>
-          Gallery
-        </a>
+        <a href="#date" onClick={closeMenu}>Date</a>
+        <a href="#rsvp" onClick={closeMenu}>RSVP</a>
       </div>
 
     </nav>
