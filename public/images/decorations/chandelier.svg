@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" fill="none">
+ <defs>
+  <linearGradient id="gold" x1="30" y1="20" x2="205" y2="320" gradientUnits="userSpaceOnUse"><stop stop-color="#E8D5A4"/><stop offset=".5" stop-color="#B89A68"/><stop offset="1" stop-color="#8F7044"/></linearGradient>
+  <linearGradient id="crystal" x1="80" y1="130" x2="160" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF9F5" stop-opacity=".98"/><stop offset="1" stop-color="#DDAAB7" stop-opacity=".65"/></linearGradient>
+ </defs>
+ <g stroke="url(#gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M120 0V42M120 42C120 62 100 65 100 82M120 42C120 62 140 65 140 82"/>
+  <path d="M100 82Q120 100 140 82M82 105Q120 125 158 105M66 132Q120 152 174 132"/>
+  <path d="M82 105L66 132M158 105L174 132M100 82L82 105M140 82L158 105"/>
+  <path d="M66 132C55 154 60 182 84 196M174 132C185 154 180 182 156 196"/>
+  <path d="M84 196Q120 220 156 196M73 224Q120 248 167 224M88 253Q120 273 152 253"/>
+  <path d="M73 224L84 196M167 224L156 196M88 253L73 224M152 253L167 224"/>
+  <path d="M120 100V280M100 280Q120 303 140 280"/>
+ </g>
+ <g fill="url(#crystal)" stroke="#B89A68" stroke-width="1.2">
+  <path d="M120 108l-9 16 9 14 9-14z"/><path d="M78 145l-9 15 9 15 9-15z"/><path d="M162 145l-9 15 9 15 9-15z"/>
+  <path d="M94 181l-10 17 10 17 10-17z"/><path d="M146 181l-10 17 10 17 10-17z"/>
+  <path d="M70 221l-9 15 9 15 9-15z"/><path d="M170 221l-9 15 9 15 9-15z"/>
+  <path d="M96 242l-8 14 8 14 8-14z"/><path d="M144 242l-8 14 8 14 8-14z"/>
+  <path d="M120 275l-12 18 12 18 12-18z"/>
+ </g>
+ <g fill="#E6C4CB" stroke="#B89A68" stroke-width="1">
+  <circle cx="120" cy="77" r="6"/><circle cx="66" cy="132" r="5"/><circle cx="174" cy="132" r="5"/><circle cx="84" cy="196" r="5"/><circle cx="156" cy="196" r="5"/><circle cx="73" cy="224" r="4"/><circle cx="167" cy="224" r="4"/>
+ </g>
+</svg>
